@@ -83,13 +83,19 @@ This is a static HTML/JS app with no build step, so a traditional `.env` file wo
 3. Open `config.js` and paste your key in place of `YOUR_API_KEY_HERE`.
 4. `config.js` is listed in `.gitignore`, so it will never be committed or pushed to GitHub — only `config.example.js` (the template, with no real key) is tracked.
 
-### ⚠️ Important note on deploying to GitHub Pages
+## Deploying online with AI replies
 
-GitHub Pages serves static files with no server-side logic, so there's no way to keep a client-side API key fully private once the app is live — anyone can open dev tools and read it from the loaded `config.js`. This is a known tradeoff for client-only hackathon prototypes (the README's "Known limitations" section below covers the production fix: proxying calls through a backend).
+Use Vercel for the live demo. This repo includes `api/gemini.js`, a serverless proxy that reads the API key from a private environment variable and calls Gemma from the server. The browser never receives the key.
 
-For the hackathon demo, two practical options:
-- **Deploy anyway with key restrictions.** In Google Cloud Console, restrict your API key to only allow requests from your `https://YOUR_USERNAME.github.io/*` domain (Credentials → your key → Application restrictions → HTTP referrers). This stops the key from being usable elsewhere even if someone copies it.
-- **Judges run it locally.** If judges are expected to clone and run the repo (some Kaggle hackathons accept this), your `config.js` never needs to touch the public deployment at all — only your own machine.
+1. Push the repo to GitHub.
+2. Import the repo at [vercel.com](https://vercel.com).
+3. In the Vercel project settings, add an environment variable:
+   - Name: `GOOGLE_API_KEY`
+   - Value: your Google AI Studio key
+4. Redeploy the Vercel project.
+5. Open the Vercel URL and ask a question in chat.
+
+GitHub Pages can still host the static interface, but it cannot securely run Gemma calls because it has no backend or private environment variables. For a working public AI demo, use the Vercel URL.
 
 ## Tech stack
 
@@ -97,6 +103,6 @@ Plain HTML/CSS/JS — no build step, no framework, no backend. Data is seeded JS
 
 ## Known limitations / how this would scale
 
-- The API key is loaded client-side via `config.js` for this prototype (kept out of git history, but still visible in the browser once deployed); production would proxy calls through a backend so the key is never shipped to the client at all.
+- The API key is loaded client-side via `config.js` only for local testing. Online Gemma calls go through the Vercel serverless proxy in `api/gemini.js`, with the key stored as a private `GOOGLE_API_KEY` environment variable.
 - Crowdsourced data (exam updates) is stored in browser localStorage rather than a shared database; production would use Firebase or Supabase so updates sync across all students, not just the browser that posted them.
 - Location data is seeded manually; production would add photo-to-text OCR so class reps can snap a photo of a physical notice board and have it parsed automatically.

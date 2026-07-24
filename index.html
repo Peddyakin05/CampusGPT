@@ -1001,7 +1001,11 @@ window.APP_CONFIG = window.APP_CONFIG || {};
 const DEPLOYED_API_KEY = "";
 const GOOGLE_API_KEY = (window.APP_CONFIG && window.APP_CONFIG.GOOGLE_API_KEY) || DEPLOYED_API_KEY;
 const GEMMA_MODEL = "gemma-4-26b-a4b-it";
-const GEMMA_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMMA_MODEL}:generateContent?key=${GOOGLE_API_KEY}`;
+const HAS_LOCAL_GEMMA_KEY = Boolean(GOOGLE_API_KEY);
+const CAN_USE_GEMMA = HAS_LOCAL_GEMMA_KEY || (location.protocol.startsWith("http") && !location.hostname.endsWith("github.io"));
+const GEMMA_URL = HAS_LOCAL_GEMMA_KEY
+  ? `https://generativelanguage.googleapis.com/v1beta/models/${GEMMA_MODEL}:generateContent?key=${GOOGLE_API_KEY}`
+  : "/api/gemini";
 
 let universities = [];
 let currentUni = null;
@@ -1236,7 +1240,7 @@ function friendlyErrorMessage(err) {
   const [category, detail] = (err.message || "").split("|");
   switch (category) {
     case "AUTH":
-      return "⚠️ Your Google AI API key was rejected. Double-check config.js has a valid key from aistudio.google.com/apikey, and that the Generative Language API is enabled for that project.";
+      return "⚠️ Your Google AI API key was rejected. Double-check config.js locally, or GOOGLE_API_KEY in your online host, and make sure the Generative Language API is enabled for that project.";
     case "RATE_LIMIT":
       return "⚠️ Gemma's free tier rate limit was hit. Wait a few seconds and try again — this happens if messages are sent too quickly in a row.";
     case "BAD_REQUEST":
@@ -1333,7 +1337,7 @@ STRICT OUTPUT RULES:
 // location, or exam date itself here — it only routes.
 // ============================================================
 async function classifyIntent(msg) {
-  if (!GOOGLE_API_KEY) return "CHAT";
+  if (!CAN_USE_GEMMA) return "CHAT";
   const prompt = `Classify this student's message into exactly one category. Reply with only the single word and nothing else — no explanation, no punctuation.
 Categories: GPA (about grades, CGPA, grade points, academic performance), LOCATION (finding buildings, venues, halls, facilities on campus), TIMELINE (exam dates, timetable, when is my exam, upcoming tests), CHAT (everything else).
 
@@ -1371,7 +1375,7 @@ Category:`;
 // grounded strictly in local/deterministic data, never web search.
 // ============================================================
 async function gemmaReply(systemInstruction, userMsg, { grounded = false } = {}) {
-  if (!GOOGLE_API_KEY) return { text: "(Add your Google AI API key to enable Gemma responses)", sources: [] };
+  if (!CAN_USE_GEMMA) return { text: "(Add your Google AI API key to enable Gemma responses)", sources: [] };
   const body = {
     system_instruction: { parts: [{ text: systemInstruction + STRICT_FORMAT_RULES }] },
     contents: [{ role: "user", parts: [{ text: userMsg }] }],
@@ -1402,7 +1406,7 @@ async function gemmaReply(systemInstruction, userMsg, { grounded = false } = {})
 // live internet access — GPA and exam timeline logic never do.
 // ============================================================
 async function gemmaConversation() {
-  if (!GOOGLE_API_KEY) return { text: "(Add your Google AI API key to enable Gemma responses)", sources: [] };
+  if (!CAN_USE_GEMMA) return { text: "(Add your Google AI API key to enable Gemma responses)", sources: [] };
   const systemInst = `You are CampusGPT, a helpful AI assistant for students at ${currentUni.name} in Nigeria. You understand Pidgin English and Nigerian campus culture. Be friendly, concise (under 150 words), and practical. If asked about GPA, locations, or exam schedules, briefly direct the user to the relevant tab. You have access to Google Search — use it when a question needs current or factual real-world information you're not certain of; don't guess.` + STRICT_FORMAT_RULES;
   const { text: reply, sources } = await callGemma({
     system_instruction: { parts: [{ text: systemInst }] },
@@ -1667,7 +1671,7 @@ async function searchLocation() {
       ).join("")}</div>`
     : "";
 
-  if (GOOGLE_API_KEY) {
+  if (CAN_USE_GEMMA) {
     try {
       const reply = await gemmaReply(
         `You are a friendly campus guide at ${currentUni.name}. The location database returned: "${toolResult}". Give clear, step-by-step walking directions. Be specific and conversational. If the location isn't found, tell the student honestly and suggest alternatives.`,
