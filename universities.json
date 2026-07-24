@@ -1,0 +1,774 @@
+[
+  {
+    "id": "lasu",
+    "name": "Lagos State University",
+    "shortName": "LASU",
+    "campuses": [
+      "Ojo Campus",
+      "Epe Campus"
+    ],
+    "color": "#006633",
+    "accent": "#FFD700",
+    "state": "Lagos",
+    "locations": [
+      {
+        "name": "Main Gate",
+        "directions": "The main entrance on LASU Road, Ojo.",
+        "lat": 6.466,
+        "lng": 3.198
+      },
+      {
+        "name": "Faculty of Engineering & Technology (FET)",
+        "directions": "From the main gate, go straight for 500m, turn right at the first major junction. FET Auditorium is on your left.",
+        "lat": 6.467,
+        "lng": 3.197
+      },
+      {
+        "name": "Faculty of Management Sciences (FMS)",
+        "directions": "From the main gate, walk straight for about 300m. FMS is the large building on your right after the roundabout.",
+        "lat": 6.466,
+        "lng": 3.196
+      },
+      {
+        "name": "Faculty of Law",
+        "directions": "From the main gate, take the right fork and walk for 200m. The Faculty of Law building is beside the mini-stadium.",
+        "lat": 6.468,
+        "lng": 3.198
+      },
+      {
+        "name": "Senate Building / Admin Block",
+        "directions": "Directly behind the main gate, about 100m straight ahead. The tallest building on campus.",
+        "lat": 6.466,
+        "lng": 3.197
+      },
+      {
+        "name": "University Library",
+        "directions": "From the main gate, go straight and turn left at the roundabout. The library is a large two-storey building on your right.",
+        "lat": 6.465,
+        "lng": 3.196
+      },
+      {
+        "name": "MBA Hall",
+        "directions": "From the Senate building, follow the road to the left for about 400m. MBA Hall is beside the Faculty of Social Sciences.",
+        "lat": 6.467,
+        "lng": 3.199
+      },
+      {
+        "name": "Student Union Building (SUB)",
+        "directions": "From the main gate, walk 200m and turn left. The SUB is the busy building with the painted murals.",
+        "lat": 6.466,
+        "lng": 3.195
+      },
+      {
+        "name": "University Health Centre",
+        "directions": "From the Senate building, take the road heading east for 300m. The Health Centre is on your right, opposite the car park.",
+        "lat": 6.467,
+        "lng": 3.2
+      },
+      {
+        "name": "School of Communication",
+        "directions": "From the main gate, take the left road for 600m. The School of Communication is the building with the broadcast mast.",
+        "lat": 6.465,
+        "lng": 3.198
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Electrical Engineering",
+      "Law",
+      "Medicine",
+      "Accounting",
+      "Mass Communication",
+      "Architecture",
+      "Business Administration",
+      "Economics",
+      "Mathematics"
+    ],
+    "exams": [
+      {
+        "course": "GNS 101 - Use of English",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Sports Complex",
+        "department": "All"
+      },
+      {
+        "course": "GNS 102 - Nigerian Peoples & Culture",
+        "type": "GNS",
+        "date": "2026-08-28",
+        "time": "9:00 AM",
+        "venue": "Sports Complex",
+        "department": "All"
+      },
+      {
+        "course": "CSC 201 - Programming & Algorithms",
+        "type": "Departmental",
+        "date": "2026-07-26",
+        "time": "10:00 AM",
+        "venue": "FET Auditorium",
+        "department": "Computer Science"
+      },
+      {
+        "course": "CSC 301 - Data Structures",
+        "type": "Departmental",
+        "date": "2026-07-28",
+        "time": "2:00 PM",
+        "venue": "FET Room 102",
+        "department": "Computer Science"
+      },
+      {
+        "course": "LAW 201 - Constitutional Law",
+        "type": "Departmental",
+        "date": "2026-07-30",
+        "time": "9:00 AM",
+        "venue": "Faculty of Law Moot Court",
+        "department": "Law"
+      },
+      {
+        "course": "ACC 301 - Financial Accounting",
+        "type": "Departmental",
+        "date": "2026-08-01",
+        "time": "10:00 AM",
+        "venue": "FMS Hall A",
+        "department": "Accounting"
+      },
+      {
+        "course": "MCM 201 - Broadcast Journalism",
+        "type": "Departmental",
+        "date": "2026-08-03",
+        "time": "11:00 AM",
+        "venue": "School of Communication Studio",
+        "department": "Mass Communication"
+      },
+      {
+        "course": "EEE 201 - Circuit Theory",
+        "type": "Departmental",
+        "date": "2026-08-05",
+        "time": "8:00 AM",
+        "venue": "FET Lab Block",
+        "department": "Electrical Engineering"
+      }
+    ]
+  },
+  {
+    "id": "unilag",
+    "name": "University of Lagos",
+    "shortName": "UNILAG",
+    "campuses": [
+      "Akoka Campus",
+      "College of Medicine (CMUL)"
+    ],
+    "color": "#003087",
+    "accent": "#C8A000",
+    "state": "Lagos",
+    "locations": [
+      {
+        "name": "Main Gate (Abebe Village Road)",
+        "directions": "The primary entrance on Abebe Village Road, Yaba.",
+        "lat": 6.5158,
+        "lng": 3.3899
+      },
+      {
+        "name": "Faculty of Engineering",
+        "directions": "From the main gate, turn right at the first roundabout and walk 400m. Engineering is the cluster of buildings on the hill.",
+        "lat": 6.516,
+        "lng": 3.389
+      },
+      {
+        "name": "Faculty of Law",
+        "directions": "From the main gate, go straight for 300m. Law Faculty is on your left, a red-brick building before the senate.",
+        "lat": 6.518,
+        "lng": 3.391
+      },
+      {
+        "name": "Senate House",
+        "directions": "The tall landmark building at the centre of campus. Visible from most entry points.",
+        "lat": 6.517,
+        "lng": 3.39
+      },
+      {
+        "name": "Jaja Hall (Hostel)",
+        "directions": "From the senate, follow the road behind it north for 500m. Jaja Hall is the first hostel block on your right.",
+        "lat": 6.519,
+        "lng": 3.39
+      },
+      {
+        "name": "University Bookshop",
+        "directions": "From the senate, walk 100m west. The bookshop is in a single-storey building beside the car park.",
+        "lat": 6.517,
+        "lng": 3.389
+      },
+      {
+        "name": "Sports Centre & Stadium",
+        "directions": "From the main gate, take the road to your left for 600m. The sports complex is by the lagoon side.",
+        "lat": 6.515,
+        "lng": 3.392
+      },
+      {
+        "name": "Faculty of Business Administration",
+        "directions": "From Senate House, take the road south for 200m. Business Admin is the four-storey glass building.",
+        "lat": 6.516,
+        "lng": 3.39
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Law",
+      "Medicine",
+      "Accounting",
+      "Mass Communication",
+      "Architecture",
+      "Business Administration",
+      "Economics",
+      "Engineering",
+      "Education"
+    ],
+    "exams": [
+      {
+        "course": "GST 111 - Communication in English",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Faculty of Education Multipurpose Hall",
+        "department": "All"
+      },
+      {
+        "course": "GST 112 - Logic & Critical Thinking",
+        "type": "GNS",
+        "date": "2026-08-28",
+        "time": "9:00 AM",
+        "venue": "Sports Centre",
+        "department": "All"
+      },
+      {
+        "course": "COS 201 - Object Oriented Programming",
+        "type": "Departmental",
+        "date": "2026-07-26",
+        "time": "10:00 AM",
+        "venue": "Engineering Hall 1",
+        "department": "Computer Science"
+      },
+      {
+        "course": "MKT 301 - Marketing Management",
+        "type": "Departmental",
+        "date": "2026-07-28",
+        "time": "9:00 AM",
+        "venue": "FBA Lecture Hall",
+        "department": "Business Administration"
+      },
+      {
+        "course": "LAW 303 - Land Law",
+        "type": "Departmental",
+        "date": "2026-07-30",
+        "time": "11:00 AM",
+        "venue": "Faculty of Law Room 5",
+        "department": "Law"
+      },
+      {
+        "course": "ECO 201 - Microeconomics",
+        "type": "Departmental",
+        "date": "2026-08-01",
+        "time": "2:00 PM",
+        "venue": "Senate Annex",
+        "department": "Economics"
+      }
+    ]
+  },
+  {
+    "id": "oau",
+    "name": "Obafemi Awolowo University",
+    "shortName": "OAU",
+    "campuses": [
+      "Ile-Ife Campus"
+    ],
+    "color": "#8B0000",
+    "accent": "#C0C0C0",
+    "state": "Osun",
+    "locations": [
+      {
+        "name": "Main Gate",
+        "directions": "The iconic arched gate on the Ibadan-Ife expressway.",
+        "lat": 7.517,
+        "lng": 4.523
+      },
+      {
+        "name": "Faculty of Technology",
+        "directions": "From the main gate, take the campus road for 1.2km and turn left at the water tower. Tech Faculty is 300m ahead.",
+        "lat": 7.519,
+        "lng": 4.526
+      },
+      {
+        "name": "Great Hall (Oduduwa Hall)",
+        "directions": "From the roundabout at the centre of campus, follow signs for 200m. The Great Hall is the iconic amphitheatre-style building.",
+        "lat": 7.518,
+        "lng": 4.524
+      },
+      {
+        "name": "Hezekiah Oluwasanmi Library",
+        "directions": "Behind the Great Hall, 150m north. The large multi-storey building with the famous clock tower.",
+        "lat": 7.519,
+        "lng": 4.524
+      },
+      {
+        "name": "Faculty of Pharmacy",
+        "directions": "From the main gate, take the road to your right for 800m. Pharmacy is in the health science cluster.",
+        "lat": 7.516,
+        "lng": 4.525
+      },
+      {
+        "name": "Student Union Building",
+        "directions": "From the roundabout, take the road south-west for 400m. The SUB is beside the cafeteria block.",
+        "lat": 7.518,
+        "lng": 4.522
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Law",
+      "Medicine",
+      "Accounting",
+      "Economics",
+      "Pharmacy",
+      "Engineering",
+      "Architecture",
+      "Agriculture",
+      "Education"
+    ],
+    "exams": [
+      {
+        "course": "GSE 101 - Communication Skills",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Oduduwa Hall",
+        "department": "All"
+      },
+      {
+        "course": "CSC 203 - Data Structures & Algorithms",
+        "type": "Departmental",
+        "date": "2026-07-26",
+        "time": "10:00 AM",
+        "venue": "Faculty of Technology Block B",
+        "department": "Computer Science"
+      },
+      {
+        "course": "PHR 301 - Pharmacology",
+        "type": "Departmental",
+        "date": "2026-07-28",
+        "time": "8:00 AM",
+        "venue": "Faculty of Pharmacy Theatre",
+        "department": "Pharmacy"
+      },
+      {
+        "course": "AGR 201 - Crop Physiology",
+        "type": "Departmental",
+        "date": "2026-07-30",
+        "time": "9:00 AM",
+        "venue": "Agriculture Building Room 3",
+        "department": "Agriculture"
+      }
+    ]
+  },
+  {
+    "id": "ui",
+    "name": "University of Ibadan",
+    "shortName": "UI",
+    "campuses": [
+      "Ibadan Main Campus"
+    ],
+    "color": "#004B87",
+    "accent": "#E8A000",
+    "state": "Oyo",
+    "locations": [
+      {
+        "name": "Main Gate (UI Road)",
+        "directions": "The primary entrance on UI Road, off Secretariat Road, Ibadan.",
+        "lat": 7.4458,
+        "lng": 3.9026
+      },
+      {
+        "name": "Kenneth Dike Library",
+        "directions": "From the main gate, go straight for 600m. The Kenneth Dike Library is the large multi-storey building on the left.",
+        "lat": 7.447,
+        "lng": 3.902
+      },
+      {
+        "name": "Faculty of Science",
+        "directions": "From Kenneth Dike Library, turn right and walk 300m. Science Faculty is on your left.",
+        "lat": 7.448,
+        "lng": 3.904
+      },
+      {
+        "name": "Faculty of Arts",
+        "directions": "From the main gate, take the second left. Arts faculty is 200m ahead, a two-storey building.",
+        "lat": 7.446,
+        "lng": 3.901
+      },
+      {
+        "name": "Trenchard Hall",
+        "directions": "At the centre of campus, follow signs from any main road. The iconic hall used for major events.",
+        "lat": 7.447,
+        "lng": 3.902
+      },
+      {
+        "name": "International Students Hostel",
+        "directions": "From the main gate, follow the road for 1km past the sports centre. ISH is on the right near the guest house.",
+        "lat": 7.449,
+        "lng": 3.905
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Medicine",
+      "Law",
+      "Economics",
+      "Agriculture",
+      "Education",
+      "Arts",
+      "Science",
+      "Pharmacy",
+      "Veterinary Medicine"
+    ],
+    "exams": [
+      {
+        "course": "GES 101 - Use of English",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Trenchard Hall",
+        "department": "All"
+      },
+      {
+        "course": "CSC 201 - Programming",
+        "type": "Departmental",
+        "date": "2026-07-26",
+        "time": "10:00 AM",
+        "venue": "Maths/Computing Building Room 1",
+        "department": "Computer Science"
+      },
+      {
+        "course": "MED 303 - Anatomy",
+        "type": "Departmental",
+        "date": "2026-07-28",
+        "time": "8:00 AM",
+        "venue": "Medical School Complex",
+        "department": "Medicine"
+      },
+      {
+        "course": "AGR 201 - General Agriculture",
+        "type": "Departmental",
+        "date": "2026-07-30",
+        "time": "9:00 AM",
+        "venue": "Agriculture Building",
+        "department": "Agriculture"
+      }
+    ]
+  },
+  {
+    "id": "abu",
+    "name": "Ahmadu Bello University",
+    "shortName": "ABU",
+    "campuses": [
+      "Samaru Campus",
+      "Kongo Campus"
+    ],
+    "color": "#006400",
+    "accent": "#FFD700",
+    "state": "Kaduna",
+    "locations": [
+      {
+        "name": "Main Gate (Samaru)",
+        "directions": "Off the Zaria bypass road. The gate has the ABU crest.",
+        "lat": 11.175,
+        "lng": 7.648
+      },
+      {
+        "name": "Senate Building",
+        "directions": "From main gate, go straight for 500m. The Senate is the tall administrative block at the centre.",
+        "lat": 11.176,
+        "lng": 7.649
+      },
+      {
+        "name": "Faculty of Engineering",
+        "directions": "From Senate, go east for 600m. Engineering is the large complex with workshops.",
+        "lat": 11.177,
+        "lng": 7.651
+      },
+      {
+        "name": "University Library",
+        "directions": "Adjacent to the Senate Building, on the north side.",
+        "lat": 11.177,
+        "lng": 7.648
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Engineering",
+      "Law",
+      "Medicine",
+      "Agriculture",
+      "Education",
+      "Economics",
+      "Sciences"
+    ],
+    "exams": [
+      {
+        "course": "GSP 101 - Use of English",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "University Amphitheatre",
+        "department": "All"
+      },
+      {
+        "course": "CMP 201 - Programming",
+        "type": "Departmental",
+        "date": "2026-07-26",
+        "time": "10:00 AM",
+        "venue": "Computer Science Building",
+        "department": "Computer Science"
+      }
+    ]
+  },
+  {
+    "id": "covenant",
+    "name": "Covenant University",
+    "shortName": "CU",
+    "campuses": [
+      "Ota Campus"
+    ],
+    "color": "#4B0082",
+    "accent": "#FFD700",
+    "state": "Ogun",
+    "locations": [
+      {
+        "name": "Main Gate",
+        "directions": "On KM 10 Idiroko Road, Ota. The gate with the Covenant University signage.",
+        "lat": 6.672,
+        "lng": 3.158
+      },
+      {
+        "name": "Chapel of Light",
+        "directions": "The prominent chapel building at the heart of the campus, visible from the main gate.",
+        "lat": 6.673,
+        "lng": 3.159
+      },
+      {
+        "name": "College of Science & Technology",
+        "directions": "From Chapel of Light, take the road east for 300m. CST is the modern glass building.",
+        "lat": 6.672,
+        "lng": 3.161
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Engineering",
+      "Law",
+      "Business Administration",
+      "Economics",
+      "Architecture"
+    ],
+    "exams": [
+      {
+        "course": "GEN 101 - Communication Skills",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Chapel of Light Annex",
+        "department": "All"
+      },
+      {
+        "course": "CSC 211 - Programming",
+        "type": "Departmental",
+        "date": "2026-07-26",
+        "time": "10:00 AM",
+        "venue": "CST Block B",
+        "department": "Computer Science"
+      }
+    ]
+  },
+  {
+    "id": "unn",
+    "name": "University of Nigeria, Nsukka",
+    "shortName": "UNN",
+    "campuses": [
+      "Nsukka Campus",
+      "Enugu Campus"
+    ],
+    "color": "#002244",
+    "accent": "#C0A000",
+    "state": "Enugu",
+    "locations": [
+      {
+        "name": "Main Gate",
+        "directions": "Off the Enugu-Nsukka Road, Nsukka.",
+        "lat": 6.864,
+        "lng": 7.396
+      },
+      {
+        "name": "University Library",
+        "directions": "From the main gate, go straight for 600m. The Library is the large building on the right.",
+        "lat": 6.865,
+        "lng": 7.397
+      },
+      {
+        "name": "Faculty of Engineering",
+        "directions": "From the library, turn left and walk 400m.",
+        "lat": 6.866,
+        "lng": 7.398
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Engineering",
+      "Law",
+      "Medicine",
+      "Agriculture",
+      "Education",
+      "Economics"
+    ],
+    "exams": [
+      {
+        "course": "GSP 101 - Communication Skills",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Main Auditorium",
+        "department": "All"
+      },
+      {
+        "course": "CSC 201 - Programming",
+        "type": "Departmental",
+        "date": "2026-07-26",
+        "time": "10:00 AM",
+        "venue": "CS Building",
+        "department": "Computer Science"
+      }
+    ]
+  },
+  {
+    "id": "futa",
+    "name": "Federal University of Technology, Akure",
+    "shortName": "FUTA",
+    "campuses": [
+      "Akure Campus"
+    ],
+    "color": "#006633",
+    "accent": "#C0A000",
+    "state": "Ondo",
+    "locations": [
+      {
+        "name": "Main Gate",
+        "directions": "Off Akure-Owo Road, Akure.",
+        "lat": 7.293,
+        "lng": 5.133
+      },
+      {
+        "name": "Senate Building",
+        "directions": "From the main gate, go straight for 400m. The Senate is the central building.",
+        "lat": 7.294,
+        "lng": 5.134
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Engineering",
+      "Architecture",
+      "Agriculture",
+      "Sciences",
+      "Environmental Technology"
+    ],
+    "exams": [
+      {
+        "course": "GNS 101 - Communication Skills",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Sports Hall",
+        "department": "All"
+      }
+    ]
+  },
+  {
+    "id": "babcock",
+    "name": "Babcock University",
+    "shortName": "BU",
+    "campuses": [
+      "Ilishan-Remo Campus"
+    ],
+    "color": "#000080",
+    "accent": "#FFD700",
+    "state": "Ogun",
+    "locations": [
+      {
+        "name": "Main Gate",
+        "directions": "On the Lagos-Ibadan Expressway, Ilishan-Remo, Ogun State.",
+        "lat": 6.876,
+        "lng": 3.718
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Law",
+      "Medicine",
+      "Business Administration",
+      "Accounting",
+      "Mass Communication"
+    ],
+    "exams": [
+      {
+        "course": "GNS 101 - Freshman English",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Chapel",
+        "department": "All"
+      }
+    ]
+  },
+  {
+    "id": "uniport",
+    "name": "University of Port Harcourt",
+    "shortName": "UNIPORT",
+    "campuses": [
+      "Choba Campus"
+    ],
+    "color": "#006633",
+    "accent": "#FFD700",
+    "state": "Rivers",
+    "locations": [
+      {
+        "name": "Main Gate",
+        "directions": "East-West Road, Choba, Port Harcourt.",
+        "lat": 4.893,
+        "lng": 6.916
+      },
+      {
+        "name": "Faculty of Engineering",
+        "directions": "From the main gate, go straight for 700m, turn left at the second junction.",
+        "lat": 4.894,
+        "lng": 6.917
+      }
+    ],
+    "departments": [
+      "Computer Science",
+      "Engineering",
+      "Law",
+      "Medicine",
+      "Economics",
+      "Mass Communication",
+      "Agriculture"
+    ],
+    "exams": [
+      {
+        "course": "GST 111 - Communication Skills",
+        "type": "GNS",
+        "date": "2026-08-23",
+        "time": "9:00 AM",
+        "venue": "Multipurpose Hall",
+        "department": "All"
+      }
+    ]
+  }
+]

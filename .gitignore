@@ -1,0 +1,22 @@
+# API keys / secrets — never commit your real config
+config.js
+.env
+.env.local
+.env.*.local
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Node (in case you add tooling later)
+node_modules/
+npm-debug.log*
+
+# Misc
+*.log
+.cache/
