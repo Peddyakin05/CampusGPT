@@ -171,6 +171,21 @@
   .uni-pill:hover { border-color: var(--uni-color); }
   .uni-pill-dot { width: 8px; height: 8px; border-radius: 50%; }
   .header-right { display: flex; align-items: center; gap: 8px; }
+  .api-header-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .api-header-btn:hover {
+    border-color: var(--uni-color);
+    color: var(--uni-color);
+  }
   .dept-selector select {
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -725,6 +740,83 @@
     margin-top: 10px;
   }
 
+  /* ── API KEY TAB ── */
+  .settings-layout {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    max-width: 760px;
+    width: 100%;
+  }
+  .settings-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .settings-panel p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .api-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .api-input-row input {
+    flex: 1;
+    min-width: 0;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    outline: none;
+  }
+  .api-input-row input:focus { border-color: var(--uni-color); }
+  .api-input-row button,
+  .api-actions button {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    padding: 0 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .api-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .api-actions .primary {
+    background: var(--uni-color);
+    border-color: var(--uni-color);
+    color: #fff;
+  }
+  .api-status {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+  .api-status.ready {
+    border-color: var(--success);
+    background: rgba(63,185,80,0.08);
+  }
+  .api-status.missing {
+    border-color: var(--warning);
+    background: rgba(210,153,34,0.08);
+  }
+
   /* Shared utilities */
   .label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
   .empty-state { text-align: center; padding: 48px 24px; color: var(--text-muted); }
@@ -746,6 +838,9 @@
     .exam-card { grid-template-columns: 50px 1fr; }
     .exam-badge { display: none; }
     .onboard-card { padding: 32px 24px; }
+    .settings-layout { padding: 16px; }
+    .api-input-row { flex-direction: column; }
+    .api-input-row button { padding: 10px 14px; }
   }
 </style>
 </head>
@@ -777,6 +872,7 @@
       </div>
     </div>
     <div class="header-right">
+      <button class="api-header-btn" type="button" onclick="switchTab('api')">API Key</button>
       <div class="dept-selector">
         <select id="deptSelect" onchange="currentDept = this.value; renderTimeline()">
           <option value="All">All Departments</option>
@@ -797,6 +893,9 @@
     </button>
     <button class="tab-btn" onclick="switchTab('timeline')" id="tab-timeline">
       <span class="tab-icon">⚠️</span> Exam Timeline
+    </button>
+    <button class="tab-btn" onclick="switchTab('api')" id="tab-api">
+      <span class="tab-icon">API</span> API Key
     </button>
     <button class="tab-btn" onclick="switchTab('about')" id="tab-about">
       <span class="tab-icon">ℹ️</span> About
@@ -935,6 +1034,26 @@
     </div>
   </div>
 
+  <!-- API KEY TAB -->
+  <div class="tab-content" id="content-api">
+    <div class="settings-layout">
+      <div class="section-title">Google AI API Key</div>
+      <div class="settings-panel">
+        <p>Paste your own Google AI Studio API key here to enable Gemma replies in this browser. The key is saved only in this browser's localStorage and is used before any developer or server key.</p>
+        <div class="label">API Key</div>
+        <div class="api-input-row">
+          <input type="password" id="apiKeyInput" placeholder="Paste your Google AI API key" autocomplete="off" spellcheck="false">
+          <button type="button" onclick="toggleApiKeyVisibility()" id="apiKeyToggleBtn">Show</button>
+        </div>
+        <div class="api-actions">
+          <button type="button" class="primary" onclick="saveUserApiKey()">Save API Key</button>
+          <button type="button" onclick="clearUserApiKey()">Clear Saved Key</button>
+        </div>
+        <div class="api-status" id="apiKeyStatus"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ABOUT TAB -->
   <div class="tab-content" id="content-about">
     <div class="about-layout">
@@ -974,7 +1093,7 @@
       <div class="about-section">
         <h3>Gemma Integration</h3>
         <p>Every chat message goes to Gemma 4 (<code style="background:var(--surface2);padding:1px 6px;border-radius:4px;font-size:0.8rem;">gemma-4-26b-a4b-it</code>) via the Google Generative Language API. Gemma first classifies intent, then either routes to a tool or responds conversationally. It understands Pidgin English and Nigerian campus slang natively.</p>
-        <div class="api-key-note">⚠️ <strong>Demo note:</strong> The API key is stored client-side for this prototype. In production, this call would be proxied through a serverless backend to avoid key exposure.</div>
+        <div class="api-key-note">⚠️ <strong>Demo note:</strong> You can add your own key in the API Key tab. Keys saved there are stored client-side for this prototype. In production, AI calls should be proxied through a serverless backend to avoid key exposure.</div>
       </div>
 
       <div class="about-section">
@@ -993,19 +1112,39 @@
 window.APP_CONFIG = window.APP_CONFIG || {};
 // ── CONFIG ──
 // API key priority:
-// 1. config.js (local dev — gitignored, never pushed to GitHub)
-// 2. DEPLOYED_API_KEY below (optional public demo fallback)
+// 1. API Key tab (saved in this browser's localStorage)
+// 2. config.js (local dev — gitignored, never pushed to GitHub)
+// 3. DEPLOYED_API_KEY below (optional public demo fallback)
 //
 // Do not commit a real key here. GitHub Pages is static, so any value in this
 // file is visible to everyone who opens the site.
 const DEPLOYED_API_KEY = "";
-const GOOGLE_API_KEY = (window.APP_CONFIG && window.APP_CONFIG.GOOGLE_API_KEY) || DEPLOYED_API_KEY;
 const GEMMA_MODEL = "gemma-4-26b-a4b-it";
-const HAS_LOCAL_GEMMA_KEY = Boolean(GOOGLE_API_KEY);
-const CAN_USE_GEMMA = HAS_LOCAL_GEMMA_KEY || (location.protocol.startsWith("http") && !location.hostname.endsWith("github.io"));
-const GEMMA_URL = HAS_LOCAL_GEMMA_KEY
-  ? `https://generativelanguage.googleapis.com/v1beta/models/${GEMMA_MODEL}:generateContent?key=${GOOGLE_API_KEY}`
-  : "/api/gemini";
+const USER_API_KEY_STORAGE = "campusgpt_google_api_key";
+let userGoogleApiKey = (localStorage.getItem(USER_API_KEY_STORAGE) || "").trim();
+
+function configuredGoogleApiKey() {
+  return ((window.APP_CONFIG && window.APP_CONFIG.GOOGLE_API_KEY) || DEPLOYED_API_KEY || "").trim();
+}
+
+function activeGoogleApiKey() {
+  return userGoogleApiKey || configuredGoogleApiKey();
+}
+
+function hasDirectGemmaKey() {
+  return Boolean(activeGoogleApiKey());
+}
+
+function canUseGemma() {
+  return hasDirectGemmaKey() || (location.protocol.startsWith("http") && !location.hostname.endsWith("github.io"));
+}
+
+function gemmaUrl() {
+  const key = activeGoogleApiKey();
+  return key
+    ? `https://generativelanguage.googleapis.com/v1beta/models/${GEMMA_MODEL}:generateContent?key=${encodeURIComponent(key)}`
+    : "/api/gemini";
+}
 
 let universities = [];
 let currentUni = null;
@@ -1020,6 +1159,7 @@ async function init() {
   const res = await fetch("universities.json");
   universities = await res.json();
   renderUniList(universities);
+  renderApiKeyStatus();
 
   // restore saved uni
   const saved = localStorage.getItem("campusgpt_uni");
@@ -1080,6 +1220,7 @@ function selectUniversity(u) {
   initGPA();
   updateWelcomeMessage(u);
   updateArchDiagram(u);
+  renderApiKeyStatus();
   switchTab("chat");
 }
 
@@ -1135,6 +1276,54 @@ function switchTab(name) {
   document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
   document.getElementById(`tab-${name}`).classList.add("active");
   document.getElementById(`content-${name}`).classList.add("active");
+  if (name === "api") renderApiKeyStatus();
+}
+
+function saveUserApiKey() {
+  const input = document.getElementById("apiKeyInput");
+  const key = input.value.trim();
+  if (!key) {
+    renderApiKeyStatus("Paste an API key before saving.");
+    return;
+  }
+  userGoogleApiKey = key;
+  localStorage.setItem(USER_API_KEY_STORAGE, key);
+  input.value = "";
+  renderApiKeyStatus("Saved. Gemma calls will now use your browser key first.");
+}
+
+function clearUserApiKey() {
+  userGoogleApiKey = "";
+  localStorage.removeItem(USER_API_KEY_STORAGE);
+  const input = document.getElementById("apiKeyInput");
+  if (input) input.value = "";
+  renderApiKeyStatus("Saved browser key cleared.");
+}
+
+function toggleApiKeyVisibility() {
+  const input = document.getElementById("apiKeyInput");
+  const btn = document.getElementById("apiKeyToggleBtn");
+  if (!input || !btn) return;
+  const showing = input.type === "text";
+  input.type = showing ? "password" : "text";
+  btn.textContent = showing ? "Show" : "Hide";
+}
+
+function renderApiKeyStatus(message = "") {
+  const el = document.getElementById("apiKeyStatus");
+  if (!el) return;
+  const hasUserKey = Boolean(userGoogleApiKey);
+  const hasConfiguredKey = Boolean(configuredGoogleApiKey());
+  const hasProxy = location.protocol.startsWith("http") && !location.hostname.endsWith("github.io");
+  const source = hasUserKey
+    ? "Using your saved browser key."
+    : hasConfiguredKey
+      ? "Using the configured developer key."
+      : hasProxy
+        ? "Using the serverless proxy if GOOGLE_API_KEY is configured on the host."
+        : "No API key is available yet.";
+  el.className = `api-status ${canUseGemma() ? "ready" : "missing"}`;
+  el.textContent = message ? `${message} ${source}` : source;
 }
 
 // ── CHAT ──
@@ -1240,7 +1429,7 @@ function friendlyErrorMessage(err) {
   const [category, detail] = (err.message || "").split("|");
   switch (category) {
     case "AUTH":
-      return "⚠️ Your Google AI API key was rejected. Double-check config.js locally, or GOOGLE_API_KEY in your online host, and make sure the Generative Language API is enabled for that project.";
+      return "⚠️ Your Google AI API key was rejected. Check the API Key tab, config.js locally, or GOOGLE_API_KEY in your online host, and make sure the Generative Language API is enabled for that project.";
     case "RATE_LIMIT":
       return "⚠️ Gemma's free tier rate limit was hit. Wait a few seconds and try again — this happens if messages are sent too quickly in a row.";
     case "BAD_REQUEST":
@@ -1266,7 +1455,7 @@ function friendlyErrorMessage(err) {
 //    message instead of a generic "something went wrong."
 // ============================================================
 async function callGemma(body) {
-  const res = await fetch(GEMMA_URL, {
+  const res = await fetch(gemmaUrl(), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body)
@@ -1337,7 +1526,7 @@ STRICT OUTPUT RULES:
 // location, or exam date itself here — it only routes.
 // ============================================================
 async function classifyIntent(msg) {
-  if (!CAN_USE_GEMMA) return "CHAT";
+  if (!canUseGemma()) return "CHAT";
   const prompt = `Classify this student's message into exactly one category. Reply with only the single word and nothing else — no explanation, no punctuation.
 Categories: GPA (about grades, CGPA, grade points, academic performance), LOCATION (finding buildings, venues, halls, facilities on campus), TIMELINE (exam dates, timetable, when is my exam, upcoming tests), CHAT (everything else).
 
@@ -1375,7 +1564,7 @@ Category:`;
 // grounded strictly in local/deterministic data, never web search.
 // ============================================================
 async function gemmaReply(systemInstruction, userMsg, { grounded = false } = {}) {
-  if (!CAN_USE_GEMMA) return { text: "(Add your Google AI API key to enable Gemma responses)", sources: [] };
+  if (!canUseGemma()) return { text: "(Add your Google AI API key in the API Key tab to enable Gemma responses)", sources: [] };
   const body = {
     system_instruction: { parts: [{ text: systemInstruction + STRICT_FORMAT_RULES }] },
     contents: [{ role: "user", parts: [{ text: userMsg }] }],
@@ -1406,7 +1595,7 @@ async function gemmaReply(systemInstruction, userMsg, { grounded = false } = {})
 // live internet access — GPA and exam timeline logic never do.
 // ============================================================
 async function gemmaConversation() {
-  if (!CAN_USE_GEMMA) return { text: "(Add your Google AI API key to enable Gemma responses)", sources: [] };
+  if (!canUseGemma()) return { text: "(Add your Google AI API key in the API Key tab to enable Gemma responses)", sources: [] };
   const systemInst = `You are CampusGPT, a helpful AI assistant for students at ${currentUni.name} in Nigeria. You understand Pidgin English and Nigerian campus culture. Be friendly, concise (under 150 words), and practical. If asked about GPA, locations, or exam schedules, briefly direct the user to the relevant tab. You have access to Google Search — use it when a question needs current or factual real-world information you're not certain of; don't guess.` + STRICT_FORMAT_RULES;
   const { text: reply, sources } = await callGemma({
     system_instruction: { parts: [{ text: systemInst }] },
@@ -1671,13 +1860,13 @@ async function searchLocation() {
       ).join("")}</div>`
     : "";
 
-  if (CAN_USE_GEMMA) {
+  if (canUseGemma()) {
     try {
       const reply = await gemmaReply(
         `You are a friendly campus guide at ${currentUni.name}. The location database returned: "${toolResult}". Give clear, step-by-step walking directions. Be specific and conversational. If the location isn't found, tell the student honestly and suggest alternatives.`,
         `How do I get to ${query}?`
       );
-      aiBox.innerHTML = `<h4>🤖 Gemma 4 Directions <span class="msg-tool-tag highlight" style="display:inline-flex;">📍 Location Tool</span></h4><p>${escapeHTML(reply)}</p>${mapsLinksHtml}`;
+      aiBox.innerHTML = `<h4>🤖 Gemma 4 Directions <span class="msg-tool-tag highlight" style="display:inline-flex;">📍 Location Tool</span></h4><p>${escapeHTML(reply.text)}</p>${mapsLinksHtml}`;
     } catch (err) {
       aiBox.innerHTML = `<h4>📍 Location Data <span style="color:var(--danger);font-size:0.75rem;">(${friendlyErrorMessage(err)})</span></h4><p>${escapeHTML(toolResult)}</p>${mapsLinksHtml}`;
     }
