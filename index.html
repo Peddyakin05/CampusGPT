@@ -994,15 +994,11 @@ window.APP_CONFIG = window.APP_CONFIG || {};
 // ── CONFIG ──
 // API key priority:
 // 1. config.js (local dev — gitignored, never pushed to GitHub)
-// 2. DEPLOYED_API_KEY below (used on GitHub Pages, where config.js doesn't exist)
+// 2. DEPLOYED_API_KEY below (optional public demo fallback)
 //
-// ⚠️ DEPLOYED_API_KEY IS COMMITTED TO A PUBLIC REPO. It is only safe to put a
-// real key here because it MUST be restricted by HTTP referrer in Google Cloud
-// Console to ONLY https://peddyakin05.github.io/* (+ localhost if you still
-// want local testing to use it too). If this key is ever unrestricted, remove
-// it from this file immediately and rotate the key — an unrestricted key
-// pasted into public HTML is usable by anyone who views the page source.
-const DEPLOYED_API_KEY = "AQ.Ab8RN6L7f9IrWSDRrFziWPcwDr1uLIA6qLSGc029_ynDw7QR4g";
+// Do not commit a real key here. GitHub Pages is static, so any value in this
+// file is visible to everyone who opens the site.
+const DEPLOYED_API_KEY = "";
 const GOOGLE_API_KEY = (window.APP_CONFIG && window.APP_CONFIG.GOOGLE_API_KEY) || DEPLOYED_API_KEY;
 const GEMMA_MODEL = "gemma-4-26b-a4b-it";
 const GEMMA_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMMA_MODEL}:generateContent?key=${GOOGLE_API_KEY}`;
